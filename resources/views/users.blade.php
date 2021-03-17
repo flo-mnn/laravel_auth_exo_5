@@ -23,8 +23,28 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h1 class="text-center">Welcome to your back office, navigate here on the left</h1>
-            
+            <h1 class="text-center">All users</a></h1>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                    <tr>
+                      <th scope="row">{{$user->id}}</th>
+                      <td>{{$user->name}}</td>
+                      <td>{{$user->profiles->first}}</td>
+                      <td><a href="{{route('users.show',['user' => $user->id])}}" class="btn btn-primary">Show</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+              </table>
+        </div>
     </div>
 </div>
 @endsection
